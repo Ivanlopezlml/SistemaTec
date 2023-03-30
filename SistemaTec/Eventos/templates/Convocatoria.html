@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h1 class="fs-2">Convocatorias</h1>
+<br></br>
+
+{% for registro in registros %}
+
+<div class="py-3">
+  <div class="card card-body bg-white">
+    <div class="row">
+      <div class="col-3">
+      <img class="img-fluid" src="{{ registro.image }}" alt="{{ registro.title }}">
+      </div>
+      <div class="col-9">
+      
+           <p class="text-center text-dark fw-bold fs-2">{{registro.title}}</p>
+           <p class="text-left text-dark ">{{registro.description|striptags|truncatechars:100}}</p>
+           <p class="text-left text-dark ">Fecha: {{registro.date|date:'M d Y'|upper}}</p>
+           <div class="d-grid gap-2 d-md-block">
+              <a class="btn btn-success" href="{% url 'add_teams' %}">Participar</a>
+              <a class="btn btn-success" href="#">Mas informacion</a>
+           </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endfor %}
+
+
+{% endblock %}
+
